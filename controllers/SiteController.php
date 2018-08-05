@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\SchoolClass;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -62,6 +63,15 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionSchedule()
+    {
+        $schoolClasses = SchoolClass::find()->all();
+
+        return $this->render('schedule', [
+            'schoolClasses' => $schoolClasses,
+        ]);
     }
 
     /**
